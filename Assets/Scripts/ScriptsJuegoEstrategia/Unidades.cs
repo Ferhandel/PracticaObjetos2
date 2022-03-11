@@ -34,7 +34,7 @@ public abstract class Unidades : MonoBehaviour
     // Ejercicio diseñar cómo mueren las unidades
     public void Morir(){
         viva = false;
-        Debug.Log("He muerto");
+        Debug.Log("Ha muerto " + nombre);
     }  
     // Ejercicio hacer método para saber si la unidad está viva
 

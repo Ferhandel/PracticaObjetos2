@@ -11,7 +11,7 @@ public class Edificios : PlayableCharacter
        vidaTotal = vidaActual;
        vidaActual = 150;
        if (!getViva()){
-           Debug.Log("Edificio Rojo destruido");
+           Debug.Log("Edificio destruido");
        }    
     }
 }

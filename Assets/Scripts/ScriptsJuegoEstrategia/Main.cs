@@ -269,20 +269,30 @@ public class Main : MonoBehaviour
         //Usamos todosMortos aqui y nos ahorramos codego jeje 
         while (! todosMortos(listaVermellos) || ! todosMortos(listaAzul)){
                 pelea = Random.Range(0,2);
+                int valorListaDefensa = Random.Range(0,5);
+                int valorListaAtaque = Random.Range(2,4);
+
                 if(pelea == 1){
-                    listaVermellos[Random.Range(0,4)].SerAtacado(((Militar)listaVermellos[Random.Range(3, 5)]).Atacar());
-                    if(! listaAzul[0].getViva() && listaAzul[1].getViva() && listaAzul[2].getViva() && listaVermellos[3].getViva() ){
-
+                    if(listaAzul[valorListaDefensa].getViva() && listaVermellos[valorListaAtaque].getViva()){
+                        listaAzul[valorListaDefensa].SerAtacado(((Militar)listaVermellos[valorListaAtaque]).Atacar());                   
                     }
-
-          
-        }
-
-        
-
+                    if(todosMortos(listaAzul) || ! listaAzul[2].getViva() && ! listaAzul[3].getViva() ){
+                        Debug.Log("GANA EL EQUIPO ROJO");
+                        break;
+                    }
+                } else if (pelea == 0) {   
+                    if(listaVermellos[valorListaDefensa].getViva() && listaAzul[valorListaAtaque].getViva()){
+                        listaVermellos[valorListaDefensa].SerAtacado(((Militar)listaAzul[valorListaAtaque]).Atacar());
+                    }                                        
+                    if(todosMortos(listaVermellos) || ! listaVermellos[2].getViva() && ! listaVermellos[3].getViva()){
+                        Debug.Log("GANA EL EQUIPO AZUL");
+                        break;                     
+                }       
+        } 
+            
        }  
     }
-    
+   
     //para comprobar si estan todos vivos o muertos: 
     private bool todosMortos(List<Unidades> equipo){
             foreach(Unidades unidad in equipo){
